@@ -34,7 +34,7 @@ struct Buzruk: Developer {
     <img src="https://img.shields.io/badge/Telegram-blue?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram"/>
   </a>
   <a href="https://leetcode.com/u/4ciB1Gz9f3/">
-    <img src="https://img.shields.io/badge/LeetCode-blue?style=for-the-badge&logo=telegram&logoColor=white" alt="LeetCode"/>
+    <img src="https://img.shields.io/badge/LeetCode-blue?style=for-the-badge&logo=leetCode&logoColor=white" alt="LeetCode"/>
   </a>
 </div>
 

@@ -25,16 +25,16 @@ struct Buzruk: Developer {
 
 <div id="socials" align="center">
     <a href="https://www.linkedin.com/in/buzurgmexr-sultonaliyev-98240a28b/">
-    <img src="https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/>
+    <img src="https://img.shields.io/badge/LinkedIn-1d6fa4?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/>
   </a>
   <a href="https://twitter.com/buzurgmexrubon">
-    <img src="https://img.shields.io/badge/Twitter-orange?style=for-the-badge&logo=twitter&logoColor=white" alt="Twitter"/>
+    <img src="https://img.shields.io/badge/Twitter-4dabe8?style=for-the-badge&logo=twitter&logoColor=white" alt="Twitter"/>
   </a>
   <a href="https://t.me/buzurgmexr">
-    <img src="https://img.shields.io/badge/Telegram-purple?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram"/>
+    <img src="https://img.shields.io/badge/Telegram-369ed7?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram"/>
   </a>
   <a href="https://leetcode.com/u/4ciB1Gz9f3/">
-    <img src="https://img.shields.io/badge/LeetCode-yellow?style=for-the-badge&logo=leetCode&logoColor=white" alt="LeetCode"/>
+    <img src="https://img.shields.io/badge/LeetCode-f7a532?style=for-the-badge&logo=leetCode&logoColor=white" alt="LeetCode"/>
   </a>
 </div>
 

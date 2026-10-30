@@ -1,0 +1,121 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "R=\"${CLAUDE_PROJECT_DIR:-$(git rev-parse --show-toplevel)}\"; CLAUDE_PLUGIN_ROOT=\"$R/.claude/base-plugin\" \"$R/.claude/base-plugin/hooks/verify-edit.sh\""
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "R=\"${CLAUDE_PROJECT_DIR:-$(git rev-parse --show-toplevel)}\"; CLAUDE_PLUGIN_ROOT=\"$R/.claude/base-plugin\" \"$R/.claude/base-plugin/hooks/guard-bash.sh\""
+          },
+          {
+            "type": "command",
+            "command": "R=\"${CLAUDE_PROJECT_DIR:-$(git rev-parse --show-toplevel)}\"; CLAUDE_PLUGIN_ROOT=\"$R/.claude/base-plugin\" \"$R/.claude/base-plugin/hooks/guard-git.sh\""
+          },
+          {
+            "type": "command",
+            "command": "R=\"${CLAUDE_PROJECT_DIR:-$(git rev-parse --show-toplevel)}\"; CLAUDE_PLUGIN_ROOT=\"$R/.claude/base-plugin\" \"$R/.claude/base-plugin/hooks/no-coauthor.sh\""
+          }
+        ]
+      },
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "R=\"${CLAUDE_PROJECT_DIR:-$(git rev-parse --show-toplevel)}\"; CLAUDE_PLUGIN_ROOT=\"$R/.claude/base-plugin\" \"$R/.claude/base-plugin/hooks/protect-config.sh\""
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "startup|resume|clear|compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "R=\"${CLAUDE_PROJECT_DIR:-$(git rev-parse --show-toplevel)}\"; CLAUDE_PLUGIN_ROOT=\"$R/.claude/base-plugin\" \"$R/.claude/base-plugin/hooks/session-start.sh\""
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "R=\"${CLAUDE_PROJECT_DIR:-$(git rev-parse --show-toplevel)}\"; CLAUDE_PLUGIN_ROOT=\"$R/.claude/base-plugin\" \"$R/.claude/base-plugin/hooks/question-guard.sh\""
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "R=\"${CLAUDE_PROJECT_DIR:-$(git rev-parse --show-toplevel)}\"; CLAUDE_PLUGIN_ROOT=\"$R/.claude/base-plugin\" \"$R/.claude/base-plugin/hooks/context-warn.sh\""
+          }
+        ]
+      }
+    ]
+  },
+  "permissions": {
+    "deny": [
+      "Bash(* --no-verify*)",
+      "Bash(curl * | bash *)",
+      "Bash(curl * | bash)",
+      "Bash(curl * | sh *)",
+      "Bash(curl * | sh)",
+      "Bash(curl * | sudo bash*)",
+      "Bash(curl * | sudo sh*)",
+      "Bash(git push * --force *)",
+      "Bash(git push * --force)",
+      "Bash(git push * -f *)",
+      "Bash(git push * -f)",
+      "Bash(git push --force *)",
+      "Bash(git push --force)",
+      "Bash(git push -f *)",
+      "Bash(git push -f)",
+      "Bash(git reset --hard*)",
+      "Bash(rm -fr /)",
+      "Bash(rm -fr ~)",
+      "Bash(rm -rf $HOME)",
+      "Bash(rm -rf --no-preserve-root*)",
+      "Bash(rm -rf / *)",
+      "Bash(rm -rf /)",
+      "Bash(rm -rf ~)",
+      "Bash(rm -rf ~/)",
+      "Bash(wget * | bash *)",
+      "Bash(wget * | bash)",
+      "Bash(wget * | sh *)",
+      "Bash(wget * | sh)",
+      "Read(**/.env)",
+      "Read(**/.env.*.local)",
+      "Read(**/.env.development)",
+      "Read(**/.env.local)",
+      "Read(**/.env.production)",
+      "Read(**/.env.staging)",
+      "Read(**/.env.test)",
+      "Read(~/.aws/**)",
+      "Read(~/.ssh/**)"
+    ]
+  },
+  "outputStyle": "Report",
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
+  "model": "opusplan"
+}

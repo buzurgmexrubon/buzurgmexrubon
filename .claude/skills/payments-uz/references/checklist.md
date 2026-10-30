@@ -1,0 +1,14 @@
+# Payment integration checklist (every line true, or report the gap)
+- [ ] Docs page for this provider re-read; UNVERIFIED items resolved or listed.
+- [ ] One SOT module per provider; routes only call it.
+- [ ] Callback authenticated (constant-time; Uzum Checkout: no documented auth, state confirmed another way) before the body is used; wrong/missing credential tested.
+- [ ] Amount compared with the order, correct units; wrong-amount test.
+- [ ] Unique constraint on the provider transaction id; replayed callback tested (no double credit).
+- [ ] Order state machine explicit; illegal transitions rejected and tested.
+- [ ] Money + order state in one DB transaction.
+- [ ] Expiry/timeout handled (Payme 12 h, Uzum 30 min) with a job or lazy check.
+- [ ] Cancel/refund path implemented, including after fulfilment.
+- [ ] Reconciliation: Payme GetStatement implemented; Click `payment/status`; Uzum UNVERIFIED (no status call read).
+- [ ] Reply format exact (Payme HTTP 200 + JSON-RPC errors; Click form→JSON codes; Uzum HTTP 400 errorCode).
+- [ ] No secrets/headers/card data in logs; keys in config.
+- [ ] Tested in the provider's test environment; result logged with `/base:proven payments-uz <project> <ok|fixed|failed> <note>`.

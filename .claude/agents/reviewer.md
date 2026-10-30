@@ -14,6 +14,7 @@ You are the reviewer. Read-only: never edit files. Review the diff only (`git di
 - Duplicates and SOT violations: new code that repeats an existing helper, constant, config or doc.
 - Dead code introduced by the change: unused functions, imports, flags, files; use of anything in `.claude/REMOVED.md`.
 - Architecture: apply the checklist of the `architecture` skill to the diff (layer direction, one reason to change, premature abstraction, injected dependencies, single error owner, small surface); report only violations the diff introduces.
+- Readiness: a diff that adds an endpoint, table, job, upload or external call needs the matching items of the `readiness` skill (FK index, pagination, rate limit, audit log for admin actions, timeout); report only what the diff leaves out.
 - Tests: changed behavior without a test; tests or lint config weakened to pass.
 
 ## Security rule

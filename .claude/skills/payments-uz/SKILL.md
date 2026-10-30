@@ -9,7 +9,8 @@ description: Uzbekistan payment integration (Payme, Click, Uzum) with the checks
 
 1. Read `references/<provider>.md` for the provider in question, then re-check the cited page if the integration is non-trivial or the read date is old. Facts marked UNVERIFIED must be confirmed before coding (global Honesty rule).
 2. Put the provider logic in ONE SOT module per provider; routes only call it. Callbacks pass the Protected Path's authentication step first.
-3. Finish with `references/checklist.md`: every line must be true, or reported as a gap.
+3. If the merchant is fiscalized (OFD receipts), also read `references/fiscal.md`: items need IKPU `code`, `package_code`, `vat_percent`; Click fiscal facts are UNVERIFIED.
+4. Finish with `references/checklist.md`: every line must be true, or reported as a gap.
 
 ## Rules for every provider
 - Authenticate every callback (Payme/Uzum Merchant: Basic header; Click: md5 sign_string) with a constant-time compare before using the body. Uzum Checkout callbacks have no documented authentication: confirm the order state another way (see references/uzum.md), never trust the body alone. An IP allow-list, if the provider publishes one, is an extra layer, never a replacement.

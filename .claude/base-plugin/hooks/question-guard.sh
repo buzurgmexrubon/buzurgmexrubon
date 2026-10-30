@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Stop: if the reply asks the user a numbered question with lettered options but STATUS.md
 # "Open questions" is empty, block once so the model saves it first (chat is lost on /clear).
-# Connects to session-start.sh, which injects that section so a bare "1A" has something to match.
+# Connects to session-start.sh, which injects that section so a bare "1a" has something to match.
 # Fails open (exit 0, no output) on any problem; never blocks twice in a row.
 set -u
 command -v jq >/dev/null 2>&1 || exit 0
@@ -12,9 +12,9 @@ input="$(cat)"
 msg="$(printf '%s' "$input" | jq -r '.last_assistant_message // empty' 2>/dev/null)" || exit 0
 [ -n "$msg" ] || exit 0
 
-# A question = a numbered line ending in "?" plus a lettered option line (A/B/C).
+# A question = a numbered line ending in "?" plus a lettered option line (A/B/C or a/b/c).
 printf '%s\n' "$msg" | grep -Eq '^[[:space:]]*[0-9]+\.[[:space:]].*\?[[:space:]*]*$' || exit 0
-printf '%s\n' "$msg" | grep -Eq '^[[:space:]]*([-*][[:space:]]+)?\**[A-C]\**[[:space:]]*([(:)]|\.[[:space:]])' || exit 0
+printf '%s\n' "$msg" | grep -Eq '^[[:space:]]*([-*][[:space:]]+)?\**[A-Ca-c]\**[[:space:]]*([(:)]|\.[[:space:]])' || exit 0
 
 dir="${CLAUDE_PROJECT_DIR:-$(printf '%s' "$input" | jq -r '.cwd // empty' 2>/dev/null)}"
 [ -n "$dir" ] && [ -d "$dir" ] || exit 0

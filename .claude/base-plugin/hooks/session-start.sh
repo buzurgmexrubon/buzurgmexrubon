@@ -87,6 +87,15 @@ STATUS.md is over 3 days older than the latest commit: refresh it at the next na
   esac
 fi
 
+# why: the full gap list stays out of context; only a count is shown (digits only, never file content), regular non-symlink file only
+if [ -f "$mem/READINESS.md" ] && [ ! -L "$mem/READINESS.md" ]; then
+  rn="$(awk -F'|' '{ s=$3; gsub(/^[ \t]+|[ \t]+$/, "", s); if (s == "open") n++ } END { print n+0 }' "$mem/READINESS.md" 2>/dev/null)"
+  case "$rn" in ''|*[!0-9]*) ;; *)
+    nudge="$nudge
+readiness: $rn gaps open" ;;
+  esac
+fi
+
 # Deterministic resume snapshot: does not depend on anyone having updated STATUS.
 # why: a STATUS left as the empty template made "continue" impossible after /clear (observed in a real project).
 snap=""
@@ -118,7 +127,7 @@ fi
 text="$text$nudge"
 if [ -n "$oq" ]; then
   text="$text
-Open questions are listed first inside the memory block: a bare reply such as 1A or ok answers them; if a reply matches none, say which are open instead of guessing."
+Open questions are listed first inside the memory block: a bare reply such as 1a (any case) or ok answers them; if a reply matches none, say which are open instead of guessing."
 fi
 text="$text
 <project-memory>"

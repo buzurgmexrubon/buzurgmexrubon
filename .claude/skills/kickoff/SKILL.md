@@ -15,7 +15,7 @@ If the project already has code, run `/base:adopt` first and build on its drafts
 ## Stage 1. Detect (read-only)
 
 1. Inspect the folder: empty or existing? Stack, package manager, test/lint/typecheck commands, layout, existing CLAUDE.md, `.claude/`, docs, git state. Delegate wide searches to `explorer`; only its conclusion returns here.
-2. Ask only what the code cannot tell you, in one message, at most 5 questions: purpose and users; stack (empty folder only); deploy target; user roles and permissions; hard prohibitions. Never ask what you can find out.
+2. Ask only what the code cannot tell you, in one message, at most 5 questions: purpose and users; stack (empty folder only); deploy target; user roles and permissions; hard prohibitions; readiness profile (API, WEB, BOT, APP or STATIC) and flags (PAY, AI, PII), recorded as a DECISIONS line. Never ask what you can find out.
 
 ## Stage 2. Propose files (show each, write after approval)
 
@@ -36,4 +36,5 @@ If the project already has code, run `/base:adopt` first and build on its drafts
 
 1. Run every command you configured (test, lint, typecheck, hook, pre-commit) and show the real result.
 2. Count CLAUDE.md lines; if over 40, cut.
-3. Report in Uzbek: what was created, what was verified, what remains.
+3. Run `/base:readiness` (audit mode) for the chosen profile and flags; its gaps go to Qoldi as questions.
+4. Report in Uzbek: what was created, what was verified, what remains.

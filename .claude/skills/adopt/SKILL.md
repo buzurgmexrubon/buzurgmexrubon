@@ -14,4 +14,4 @@ disable-model-invocation: true
    - `.claude/DECISIONS.md`: one line per decision, `D<n> | YYYY-MM-DD | decision | why`. Where the evidence shows a decision was reversed, mark it superseded: `~~D3 ...~~ → D7`.
    - `.claude/REMOVED.md`: header `Item | Date | Why / evidence | Replaced by | Cleanup done?`, then one row per stale code, file or abandoned approach (evidence = `path` + reason).
 3. **Approve.** Show the three drafts. If any of these files already exist, show a diff of draft vs current instead of overwriting. Write them only after I approve (or after the edits I ask for). Never delete or modify any other file; removal is only listed.
-4. Report in Uzbek: what was found, what was written, and that `/base:kickoff` is the next step.
+4. Report in Uzbek: what was found, what was written, and that `/base:kickoff` is the next step, and that `/base:readiness` audits production gaps.
